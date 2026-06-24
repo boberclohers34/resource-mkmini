@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>mk体育 · 持续关注的起点</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    }
+
+    body {
+      background: #f1f5f9;
+      color: #1e2b3c;
+      line-height: 1.6;
+      padding: 1.5rem;
+    }
+
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    /* hero */
+    .hero {
+      background: linear-gradient(145deg, #0b3b4b 0%, #1c5c6e 100%);
+      border-radius: 2rem;
+      padding: 3rem 2rem;
+      margin-bottom: 2.5rem;
+      color: white;
+      text-align: center;
+      box-shadow: 0 12px 24px rgba(0,40,50,0.12);
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+
+    .hero h1 span {
+      color: #8ee0e0;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      max-width: 640px;
+      margin: 0 auto 1.4rem;
+      opacity: 0.92;
+    }
+
+    .hero .badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(4px);
+      padding: 0.4rem 1.2rem;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #d0f0f0;
+    }
+
+    /* 网格卡片区 */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .card {
+      background: white;
+      border-radius: 1.5rem;
+      padding: 1.8rem 1.4rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+      border: 1px solid #e2edf2;
+      transition: all 0.15s ease;
+    }
+
+    .card:hover {
+      border-color: #6ebfbf;
+      box-shadow: 0 8px 20px rgba(0,80,80,0.08);
+    }
+
+    .card .icon {
+      font-size: 2rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .card h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #0a3b45;
+      margin-bottom: 0.5rem;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      color: #2f4a5a;
+    }
+
+    /* 说明区：页面收藏 / 再次访问 */
+    .info-section {
+      background: white;
+      border-radius: 1.5rem;
+      padding: 2rem 2rem 2.2rem;
+      margin-bottom: 2.5rem;
+      border: 1px solid #d9e6ec;
+    }
+
+    .info-section h2 {
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: #0a3b45;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .info-section h2 small {
+      font-size: 1rem;
+      font-weight: 400;
+      color: #5f7d8a;
+    }
+
+    .info-section p {
+      margin-bottom: 1rem;
+    }
+
+    .info-section ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .info-section li {
+      padding: 0.5rem 0;
+      padding-left: 1.8rem;
+      position: relative;
+      color: #1c3b49;
+    }
+
+    .info-section li::before {
+      content: "▹";
+      position: absolute;
+      left: 0;
+      color: #349a9a;
+      font-weight: 700;
+    }
+
+    .info-section a {
+      color: #1b7a7a;
+      font-weight: 500;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      transition: color 0.1s;
+    }
+
+    .info-section a:hover {
+      color: #0c4e4e;
+    }
+
+    /* FAQ 摘要 */
+    .faq-snapshot {
+      background: #e3f0f2;
+      border-radius: 1.5rem;
+      padding: 2rem;
+      margin-bottom: 2.5rem;
+      border-left: 5px solid #2a8f8f;
+    }
+
+    .faq-snapshot h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #06313b;
+      margin-bottom: 1.2rem;
+    }
+
+    .faq-item {
+      margin-bottom: 1.2rem;
+    }
+
+    .faq-item strong {
+      display: block;
+      font-weight: 600;
+      color: #0b4351;
+      margin-bottom: 0.2rem;
+    }
+
+    .faq-item p {
+      color: #204652;
+      font-size: 0.95rem;
+      margin-left: 0.2rem;
+    }
+
+    .faq-snapshot .more-link {
+      display: inline-block;
+      margin-top: 0.5rem;
+      color: #1b7a7a;
+      font-weight: 500;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    /* 底部链接 */
+    .bottom-links {
+      text-align: center;
+      padding: 1.8rem 1rem 0.8rem;
+      border-top: 1px solid #cbd9e0;
+    }
+
+    .bottom-links p {
+      font-size: 0.95rem;
+      color: #3b5b6a;
+      margin-bottom: 0.6rem;
+    }
+
+    .bottom-links .link-group {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.2rem 2rem;
+    }
+
+    .bottom-links a {
+      color: #1f6c6c;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px solid transparent;
+      transition: border 0.1s;
+    }
+
+    .bottom-links a:hover {
+      border-bottom-color: #1f6c6c;
+    }
+
+    /* 响应式 */
+    @media (max-width: 600px) {
+      body {
+        padding: 0.8rem;
+      }
+      .hero {
+        padding: 2rem 1rem;
+        border-radius: 1.5rem;
+      }
+      .info-section {
+        padding: 1.4rem;
+      }
+      .faq-snapshot {
+        padding: 1.4rem;
+      }
+      .features-grid {
+        gap: 1rem;
+      }
+      .bottom-links .link-group {
+        flex-direction: column;
+        gap: 0.6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- hero 区：再次访问的入口 -->
+    <section class="hero">
+      <h1><span>mk体育</span> · 每一次都值得回来</h1>
+      <p>无论是赛前深度分析、实时数据，还是赛后复盘，这里是您持续关注体育资讯的固定坐标。收藏页面，下次不迷路。</p>
+      <div class="badge">✦ 稳定更新 · 常看常新</div>
+    </section>
+
+    <!-- 优势区：网格卡片 -->
+    <section class="features-grid">
+      <div class="card">
+        <div class="icon">📌</div>
+        <h3>一键收藏</h3>
+        <p>将当前页面添加至浏览器书签，随时返回 <a href="https://mkmini.com.cn" style="color:#1b7a7a;text-decoration:underline;">mk体育</a> 最新内容，无需重复搜索。</p>
+      </div>
+      <div class="card">
+        <div class="icon">🔄</div>
+        <h3>持续关注</h3>
+        <p>页面内容随赛季与赛事动态保持更新。再次访问时，您看到的永远是经过梳理的近期资讯。</p>
+      </div>
+      <div class="card">
+        <div class="icon">🧭</div>
+        <h3>清晰导航</h3>
+        <p>从赛事速览、球队数据到专题报道，板块结构稳定，让回访用户快速定位感兴趣的部分。</p>
+      </div>
+      <div class="card">
+        <div class="icon">📱</div>
+        <h3>移动端适配</h3>
+        <p>在手机或平板上收藏本页，利用碎片时间浏览，卡片布局与字体大小均经过响应式优化。</p>
+      </div>
+    </section>
+
+    <!-- 说明区：再次访问的意义 + 收藏建议 -->
+    <section class="info-section">
+      <h2>📋 为什么值得再次访问 <small>—— 而不是每次从头找起</small></h2>
+      <p>
+        许多体育站点内容繁多，导航层次复杂。把 <a href="https://mkmini.com.cn">mk体育</a> 加入书签或浏览器收藏夹，
+        相当于为自己设置了一个直达体育资讯的快捷入口。您不必每次回忆网址或依赖搜索，打开书签即可看到整理后的信息。
+      </p>
+      <p>
+        如果您习惯使用浏览器的「阅读列表」或「稍后阅读」功能，同样可以将本页添加至其中。页面结构注重信息层级，即使离线保存也能保留核心内容概览。
+      </p>
+      <p>适合收藏本页的场景：</p>
+      <ul>
+        <li>日常关注足球、篮球、网球等主流赛事动态</li>
+        <li>赛前快速查阅对阵与伤病信息</li>
+        <li>赛后希望看到简明复盘与数据亮点</li>
+        <li>想避开信息过载，只看经过筛选的体育要点</li>
+      </ul>
+    </section>
+
+    <!-- FAQ 摘要：收藏与持续关注常见问题 -->
+    <section class="faq-snapshot">
+      <h2>❓ 收藏与持续关注 · 常见问题</h2>
+      <div class="faq-item">
+        <strong>Q：我如何最快再次找到这个页面？</strong>
+        <p>在浏览器地址栏右侧点击星形图标（或按 Ctrl+D / Cmd+D）即可添加书签。下次点击书签栏即可直接打开 <a href="https://mkmini.com.cn">mk体育</a>。</p>
+      </div>
+      <div class="faq-item">
+        <strong>Q：页面内容会定期更新吗？</strong>
+        <p>是的。本站会结合赛季进程与重要赛事，对资讯模块进行刷新。建议每隔几天回来一次，或启用浏览器的「定期访问提醒」功能。</p>
+      </div>
+      <div class="faq-item">
+        <strong>Q：移动端如何收藏更方便？</strong>
+        <p>在 Safari 或 Chrome 中点击分享图标，选择「添加到主屏幕」—— 这样就像打开一个应用一样快速访问。</p>
+      </div>
+      <div class="faq-item">
+        <strong>Q：页面会不会突然变更地址？</strong>
+        <p>不会。本页面长期使用当前域名，您只需收藏一次即可稳定回访。如有重大结构调整，会提前在站内说明。</p>
+      </div>
+      <a href="https://mkmini.com.cn" class="more-link">mk体育</a>
+    </section>
+
+    <!-- 底部链接 -->
+    <footer class="bottom-links">
+      <p>保持关注 · 常回来看看</p>
+      <div class="link-group">
+        <a href="https://mkmini.com.cn">mk体育</a>
+        <a href="#">赛事纵览</a>
+        <a href="#">球队数据</a>
+        <a href="#">专题文章</a>
+      </div>
+      <p style="margin-top:1rem; font-size:0.8rem; color:#6b8896;">&copy; 2025 信息页面 · 仅供浏览参考</p>
+    </footer>
+  </div>
+</body>
+</html>
