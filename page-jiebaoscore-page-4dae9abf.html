@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>捷报比分 · 安静的观察哨</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: #fafafa;
+            color: #1f2a3a;
+            font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Noto Sans SC", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.65;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 1rem 3rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 660px;
+            width: 100%;
+        }
+
+        /* 开场 —— 留白 + 轻盈呼吸感 */
+        .hero {
+            margin-top: 2.5rem;
+            margin-bottom: 3.2rem;
+        }
+        .hero .short-line {
+            font-size: 1.6rem;
+            font-weight: 360;
+            letter-spacing: 0.02em;
+            color: #1f2a3a;
+            border-left: 4px solid #b0c4de;
+            padding-left: 1.1rem;
+        }
+
+        .hero .sub {
+            margin-top: 0.8rem;
+            font-size: 0.95rem;
+            color: #5c6f87;
+            font-weight: 340;
+            letter-spacing: 0.3px;
+        }
+
+        /* 承接段落 —— 窄宽、柔和底色 */
+        .story-block {
+            background: #ffffff;
+            padding: 2rem 2.2rem;
+            border-radius: 24px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02), 0 1px 2px rgba(0, 0, 0, 0.03);
+            margin-bottom: 2.6rem;
+        }
+
+        .story-block p {
+            margin-bottom: 1.4rem;
+            font-weight: 380;
+            color: #1f2a3a;
+        }
+
+        .story-block p:last-child {
+            margin-bottom: 0;
+        }
+
+        .story-block a {
+            color: #2d4b6b;
+            text-decoration: none;
+            border-bottom: 1px solid #b8c9dd;
+            transition: border-color 0.2s, color 0.2s;
+            font-weight: 420;
+        }
+
+        .story-block a:hover {
+            color: #0f2c44;
+            border-bottom-color: #2d4b6b;
+        }
+
+        /* 特点列表 —— 极简卡片，无图标干扰 */
+        .feature-list {
+            list-style: none;
+            margin: 2rem 0 2.4rem;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .feature-list li {
+            background: #ffffff;
+            padding: 1.2rem 1.6rem;
+            border-radius: 18px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.01), 0 1px 1px rgba(0, 0, 0, 0.02);
+            border: 1px solid #eef2f6;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.7rem;
+            transition: box-shadow 0.2s, border-color 0.15s;
+        }
+
+        .feature-list li:hover {
+            border-color: #cddbe9;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+        }
+
+        .feature-marker {
+            flex-shrink: 0;
+            width: 6px;
+            height: 6px;
+            background: #a3b9d2;
+            border-radius: 12px;
+            margin-top: 0.6rem;
+        }
+
+        .feature-content {
+            flex: 1;
+        }
+
+        .feature-content strong {
+            display: block;
+            font-weight: 540;
+            font-size: 1rem;
+            color: #1f2a3a;
+            margin-bottom: 0.2rem;
+        }
+
+        .feature-content span {
+            font-size: 0.9rem;
+            color: #4a5d74;
+            line-height: 1.55;
+            font-weight: 360;
+        }
+
+        /* 温和结尾 */
+        .gentle-close {
+            margin-top: 1.8rem;
+            padding: 1.6rem 0 0.8rem;
+            border-top: 1px solid #e2e9f0;
+            font-size: 0.95rem;
+            color: #3d5068;
+            font-weight: 370;
+        }
+
+        .gentle-close a {
+            color: #1f2a3a;
+            text-decoration: none;
+            border-bottom: 1px solid #b0c4de;
+            font-weight: 430;
+            transition: border-color 0.2s;
+        }
+
+        .gentle-close a:hover {
+            border-bottom-color: #1f2a3a;
+        }
+
+        .faq-note {
+            margin-top: 1.8rem;
+            background: #f3f7fc;
+            padding: 1.6rem 2rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: #2f4057;
+            border: 1px solid #e0e9f2;
+        }
+
+        .faq-note summary {
+            font-weight: 480;
+            cursor: pointer;
+            color: #1f2a3a;
+            outline: none;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .faq-note summary::-webkit-details-marker {
+            display: none;
+        }
+        .faq-note summary::before {
+            content: "▸";
+            font-size: 0.9rem;
+            display: inline-block;
+            transition: transform 0.15s;
+            color: #8ba3bd;
+        }
+        .faq-note[open] summary::before {
+            transform: rotate(90deg);
+        }
+        .faq-note p {
+            margin-top: 1rem;
+            line-height: 1.6;
+            color: #2b3f56;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #e6edf4;
+            margin: 2rem 0 1.2rem;
+        }
+
+        /* 响应式 */
+        @media (max-width: 480px) {
+            body { padding: 1.5rem 1rem 2.5rem; }
+            .hero .short-line { font-size: 1.3rem; padding-left: 0.9rem; }
+            .story-block { padding: 1.6rem 1.2rem; border-radius: 20px; }
+            .feature-list li { padding: 1rem 1.2rem; }
+            .faq-note { padding: 1.2rem 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <!-- 开场短句 -->
+        <div class="hero">
+            <div class="short-line">比分背后，是日常的锚点。</div>
+            <div class="sub">与其反复刷新，不如在一个稳定的页面上安静等待。</div>
+        </div>
+
+        <!-- 承接段落：从稳定入口和页面说明的角度展开 -->
+        <div class="story-block">
+            <p>
+                每个比赛日，总会习惯性地想看一眼场上的数字。不是非要知道每一个细节，只是想知道目前是多少、有没有变化。试过好几个平台，有些广告太多，有些页面加载半天，还有些一到关键分就卡住。后来慢慢固定在一个地方——<a href="https://page-jiebaoscore.com">捷报比分</a>，页面很轻，打开快，更新及时。
+            </p>
+            <p>
+                其实喜欢它的理由很简单：它不吵。没有弹窗，没有浮夸的动效，也没有催促你下载 APP 的横幅。打开就是一个干净的列表，每场比分清清楚楚。对于只是想看一眼的人来说，这种「用完即走」的体验反而让人更愿意回来。
+            </p>
+        </div>
+
+        <!-- 特点列表 —— 从页面本身体验出发 -->
+        <ul class="feature-list">
+            <li>
+                <div class="feature-marker"></div>
+                <div class="feature-content">
+                    <strong>轻量加载</strong>
+                    <span>首屏不堆资源，弱网环境也能快速看到实时比分。页面结构单一，没有多余的重定向。</span>
+                </div>
+            </li>
+            <li>
+                <div class="feature-marker"></div>
+                <div class="feature-content">
+                    <strong>无干扰布局</strong>
+                    <span>没有悬浮广告、自动播放视频或诱导点击的浮层。视觉焦点始终在数据本身。</span>
+                </div>
+            </li>
+            <li>
+                <div class="feature-marker"></div>
+                <div class="feature-content">
+                    <strong>稳定的长期入口</strong>
+                    <span>域名直接对应页面，适合存为书签或放在手机桌面。不需要每次从搜索或导航页跳转。</span>
+                </div>
+            </li>
+        </ul>
+
+        <!-- FAQ 摘要 + 温和结尾融合 -->
+        <details class="faq-note">
+            <summary>一些你可能想知道的</summary>
+            <p>
+                页面没有复杂的设置，打开即显示比分。如果你是第一次使用，可以把它当作一个安静的观察哨：不需要注册，没有个人信息收集，也不记录你的浏览行为。如果想在电脑和手机之间同步，直接记住地址就好。偶尔遇到数据延迟，通常是上游推送间隔，页面本身没有额外缓存。
+            </p>
+        </details>
+
+        <div class="gentle-close">
+            <p>
+                比分总是暂时的，但一个可靠的入口可以成为习惯。如果你也在找一个不打扰人的比分页面，或许可以试试把 <a href="https://page-jiebaoscore.com">捷报比分</a> 收起来，放在浏览器的书签栏或手机主屏的角落里。它不耀眼，但需要的时候，它就在。
+            </p>
+        </div>
+
+        <hr>
+        <div style="font-size: 0.8rem; color: #7a8b9f; text-align: center; letter-spacing: 0.5px; margin-top: 1rem;">
+            <span>安静的观察哨 · 捷报比分</span>
+        </div>
+    </div>
+</body>
+</html>
